@@ -12,7 +12,7 @@ import {SiHandshake} from "react-icons/si"
 export default function Home() {
   return (
     <>
-      <div className="flex p-10 justify-between ">
+      <div className="flex p-10 justify-between text-black">
         <div className="flex flex-col justify-between pr-36 pl-20">
           <div>
             <h1 className=" text-6xl font-extrabold py-4">
