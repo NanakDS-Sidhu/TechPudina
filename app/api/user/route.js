@@ -4,26 +4,50 @@ import { NextResponse } from "next/server";
 
 connectDb();
 
-export async function GET(request) {
+export async function GET(request, context) {
     try {
         // Fetch users from the database
         const filters = {};
-        console.log(request.nextUrl.searchParams);
-        if (request.query.type) {
-            filters.type = request.query.type;
+        const query = request.nextUrl.searchParams;
+        console.log(query);
+
+        // Filter by type
+        if (query.get('type')) {
+            filters.type = query.get('type');
         }
-        if (request.query.rating) {
-            filters.rating = { $gte: parseInt(request.query.rating) };
+
+        // Filter by rating
+        if (query.get('rating')) {
+            filters.rating = { $gte: parseInt(query.get('rating')) };
         }
-        if (request.query.location) {
-            filters.location = request.query.location;
+
+        // Filter by location
+        if (query.get('location')) {
+            filters.location = query.get('location');
         }
+
+        // Filter by servicetype
+        if (query.get('servicetype')) {
+            filters.servicetype = query.get('servicetype');
+        }
+
+        // Filter by servicesubtype
+        if (query.get('servicesubtype')) {
+            filters.servicesubtype = query.get('servicesubtype');
+        }
+
+        // Filter by practisecourts
+        if (query.get('practisecourts')) {
+            filters.practisecourts = { $in: query.get('practisecourts').split(',') };
+        }
+
         const users = await User.find(filters);
         return NextResponse.json({ data: users }, { status: 200 });
     } catch (error) {
         return NextResponse.json({ error: 'Error fetching users' }, { status: 500 });
     }
 }
+
 
 export async function HEAD(request) { }
 
