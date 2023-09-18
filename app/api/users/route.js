@@ -60,7 +60,7 @@ export async function POST(request) {
 
 export async function DELETE(request) {
     try {
-
+        
         const userId = request.nextUrl.searchParams.get("id");
         console.log(userId)
         if (!userId) {
