@@ -3,13 +3,16 @@ import Image from "next/image";
 import HomeImg from "../public/assets/home-bg.jpg";
 import ProfessionCard from "../components/ProfessionCard";
 
-import { PiScalesThin } from "react-icons/pi";
+import { HiMiniScale } from "react-icons/hi2";
 import {HiOutlineDocumentText} from "react-icons/hi";
+import {ImHammer2} from "react-icons/im";
+import {PiHandshakeBold} from "react-icons/pi"
+import {SiHandshake} from "react-icons/si"
 
 export default function Home() {
   return (
     <>
-      <div className="flex p-10 justify-between ">
+      <div className="flex p-10 justify-between text-black">
         <div className="flex flex-col justify-between pr-36 pl-20">
           <div>
             <h1 className=" text-6xl font-extrabold py-4">
@@ -36,21 +39,21 @@ export default function Home() {
           </div>
         </div>
         <div>
-          <Image src={HomeImg}></Image>
+          <Image src={HomeImg} alt="home background image"></Image>
         </div>
       </div>
 
       <div className="mt-8 px-20">
         <div className="h-1/2"></div>
-        <h1 className="flex justify-center text-3xl font-extrabold mb-14">
+        <h1 className="flex justify-center text-3xl font-extrabold mb-10">
           Select a Service
         </h1>
-        <div className="flex justify-around h-1/2">
-          <button><ProfessionCard icon={<PiScalesThin />}>Advocates</ProfessionCard></button>
+        <div className="flex justify-around h-auto  text-5xl">
+          <button><ProfessionCard icon={<HiMiniScale />}>Advocates</ProfessionCard></button>
           <button><ProfessionCard icon={<HiOutlineDocumentText />}>Document Writers</ProfessionCard></button>
-          <button><ProfessionCard icon={<PiScalesThin />}>Notaries</ProfessionCard></button>
-          <button><ProfessionCard icon={<PiScalesThin />}>Mediators</ProfessionCard></button>
-          <button><ProfessionCard icon={<PiScalesThin />}>Arbitrators</ProfessionCard></button>
+          <button><ProfessionCard icon={<ImHammer2 />}>Notaries</ProfessionCard></button>
+          <button><ProfessionCard icon={<PiHandshakeBold />}>Mediators</ProfessionCard></button>
+          <button><ProfessionCard icon={<SiHandshake />}>Arbitrators</ProfessionCard></button>
         </div>
       </div>
     </>
