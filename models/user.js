@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 // Define a user schema with common fields for all users
 const userSchema = new mongoose.Schema({
-    firstName: {
+    fullName: {
         type: String,
         required: true,
     },

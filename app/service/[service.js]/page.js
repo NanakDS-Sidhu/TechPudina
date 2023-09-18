@@ -1,14 +1,20 @@
 import React from 'react'
 import PersonTable from './PersonTable';
+import DropDownFilter from './DropDownFilter';
+import Filters from './Filters';
 
 
 export default function page() {
 
   return (
-    <div className='h-screen bg-zinc-100 text-black flex'>
-      <div className='w-1/4'></div>
+    <div className='h-screen  text-black flex'>
+      <div className='w-1/4 h-screen'>
+        <h2 className='text-5xl p-4'>Filters</h2>
+          <Filters></Filters>
 
-      <div className='grow' >      <h1 className='text-5xl'>List of Lawyers</h1>
+      </div>
+
+      <div className='grow' >      <h1 className='text-5xl p-4'>List of Lawyers</h1>
       <PersonTable></PersonTable>
       </div>
 

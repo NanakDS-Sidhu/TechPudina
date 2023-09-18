@@ -4,6 +4,7 @@ import Image from "next/image";
 import Img from "../../../public/assets/auth-bg.png";
 import Link from "next/link";
 import {AdvocatesTypes} from "../../../data"
+import { useRouter } from "next/navigation";
 
 const signUpInitialValues = {
   fullName: "",
@@ -16,13 +17,33 @@ const signUpInitialValues = {
 
 const page = () => {
   const [data, setData] = useState(signUpInitialValues);
+  const router = useRouter();
 
   const onValueChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(data);
+    try {
+      const response = await fetch("/api/users/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      const responseData = await response.json();
+      console.log("Signup success", responseData);
+      router.push("/auth/login");
+    } catch (error) {
+      console.log("Signup failed", error.message);
+    }
   };
 
   return (
