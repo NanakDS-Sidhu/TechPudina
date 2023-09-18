@@ -3,13 +3,12 @@ import mongoose from "mongoose";
 
 // Define a user schema with common fields for all users
 const userSchema = new mongoose.Schema({
-    name: {
+    firstName: {
         type: String,
         required: true,
     },
     dob: {
         type: Date,
-        required: true,
     },
     email: {
         type: String,
@@ -85,4 +84,4 @@ const userSchema = new mongoose.Schema({
 
 // Create a user model based on the userSchema
 const User = mongoose.models.User || mongoose.model('User', userSchema);
-module.exports = User;
+export default User;
