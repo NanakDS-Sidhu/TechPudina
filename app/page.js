@@ -39,7 +39,7 @@ export default function Home() {
           </div>
         </div>
         <div>
-          <Image src={HomeImg}></Image>
+          <Image src={HomeImg} alt="home background image"></Image>
         </div>
       </div>
 
