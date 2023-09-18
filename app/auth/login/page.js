@@ -10,7 +10,7 @@ const loginInitialValues = {
   password: ""
 }
 
-const login = () => {
+const Login = () => {
   const router = useRouter();
   const [data, setData] = useState(loginInitialValues);
 
@@ -39,7 +39,6 @@ const login = () => {
 
     } catch (error) {
       console.log("Login failed", error.message);
-      toast.error(error.message);
     }
   }
 
@@ -89,4 +88,4 @@ const login = () => {
   )
 }
 
-export default login
+export default Login
