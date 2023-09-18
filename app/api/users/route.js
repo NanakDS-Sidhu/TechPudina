@@ -1,14 +1,16 @@
-import connectDb from "@/config/dbConfig";
+import { connectDB } from "@/config/dbConfig";
 import User from "@/models/user"
 import { NextResponse } from "next/server";
 
-connectDb();
+connectDB();
 
-export async function GET(request, context) {
+export async function GET(request) {
     try {
         // Fetch users from the database
         const filters = {};
         const query = request.nextUrl.searchParams;
+
+        filters.role = "service_provider"
 
         // Filter by servicetype (Service Provider type)
         if (query.get('servicetype')) {
@@ -58,6 +60,7 @@ export async function POST(request) {
 
 export async function DELETE(request) {
     try {
+
         const userId = request.nextUrl.searchParams.get("id");
         console.log(userId)
         if (!userId) {
