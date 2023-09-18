@@ -9,20 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "autoprefixer": "^10.4.15",
-    "eslint": "8.49.0",
-    "eslint-config-next": "13.4.19",
-    "flowbite": "^1.8.1",
-    "flowbite-react": "^0.6.0",
-=======
     "autoprefixer": "10.4.15",
     "bcryptjs": "^2.4.3",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.5.2",
->>>>>>> c581b02baf732a2a0dbfb135a9088ddb3ef24559
     "next": "13.4.19",
     "postcss": "^8.4.29",
     "react": "18.2.0",

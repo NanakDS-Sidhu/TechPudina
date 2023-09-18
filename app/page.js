@@ -7,10 +7,6 @@ import { PiScalesThin } from "react-icons/pi";
 
 export default function Home() {
   return (
-<<<<<<< HEAD
-   <></>
-  )
-=======
     <>
       <Navbar />
       <div className="flex p-10 justify-between ">
@@ -59,5 +55,4 @@ export default function Home() {
       </div>
     </>
   );
->>>>>>> c581b02baf732a2a0dbfb135a9088ddb3ef24559
 }
