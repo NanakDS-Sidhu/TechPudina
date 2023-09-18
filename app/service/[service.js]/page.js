@@ -4,7 +4,7 @@ import DropDownFilter from './DropDownFilter';
 import Filters from './Filters';
 
 
-export default function page() {
+export default function Page() {
 
   return (
     <div className='h-screen  text-black flex'>
