@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+
 import Image from "next/image";
 import HomeImg from "../public/assets/home-bg.jpg";
 import ProfessionCard from "../components/ProfessionCard";
@@ -9,7 +9,6 @@ import {HiOutlineDocumentText} from "react-icons/hi";
 export default function Home() {
   return (
     <>
-      <Navbar />
       <div className="flex p-10 justify-between ">
         <div className="flex flex-col justify-between pr-36 pl-20">
           <div>

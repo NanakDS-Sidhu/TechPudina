@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 
 const Navbar = () => {
@@ -15,7 +16,7 @@ const Navbar = () => {
           <li className=''><a href=''>Documents</a></li>
         </ul>
         <ul className='flex items-center justify-center gap-3  ml-auto mr-3' >
-          <li className=' '><button >Sign Up</button></li>
+          <li className=' '><button ><Link href="/auth">Sign Up</Link></button></li>
           <li className=''><button className="p-2 text-white bg-black border-l rounded " >Log In</button></li>
         </ul>
         </div>

@@ -1,16 +1,14 @@
 "use client";
 import React, { useState } from "react";
-import Navbar from "../../components/Navbar";
 import Image from "next/image";
 import Img from "../../public/assets/auth-bg.png";
-import Link from "next/link";
+
 
 const page = () => {
   const [login, toggleLogin] = useState(true);
 
   return (
     <>
-      <Navbar />
       <div className="flex h-auto py-12 justify-around">
         <div className="min-w-[500px]">
           <Image className="w-full" src={Img}></Image>
