@@ -3,8 +3,11 @@ import Image from "next/image";
 import HomeImg from "../public/assets/home-bg.jpg";
 import ProfessionCard from "../components/ProfessionCard";
 
-import { PiScalesThin } from "react-icons/pi";
+import { HiMiniScale } from "react-icons/hi2";
 import {HiOutlineDocumentText} from "react-icons/hi";
+import {ImHammer2} from "react-icons/im";
+import {PiHandshakeBold} from "react-icons/pi"
+import {SiHandshake} from "react-icons/si"
 
 export default function Home() {
   return (
@@ -42,15 +45,15 @@ export default function Home() {
 
       <div className="mt-8 px-20">
         <div className="h-1/2"></div>
-        <h1 className="flex justify-center text-3xl font-extrabold mb-14">
+        <h1 className="flex justify-center text-3xl font-extrabold mb-10">
           Select a Service
         </h1>
-        <div className="flex justify-around h-1/2">
-          <button><ProfessionCard icon={<PiScalesThin />}>Advocates</ProfessionCard></button>
+        <div className="flex justify-around h-auto  text-5xl">
+          <button><ProfessionCard icon={<HiMiniScale />}>Advocates</ProfessionCard></button>
           <button><ProfessionCard icon={<HiOutlineDocumentText />}>Document Writers</ProfessionCard></button>
-          <button><ProfessionCard icon={<PiScalesThin />}>Notaries</ProfessionCard></button>
-          <button><ProfessionCard icon={<PiScalesThin />}>Mediators</ProfessionCard></button>
-          <button><ProfessionCard icon={<PiScalesThin />}>Arbitrators</ProfessionCard></button>
+          <button><ProfessionCard icon={<ImHammer2 />}>Notaries</ProfessionCard></button>
+          <button><ProfessionCard icon={<PiHandshakeBold />}>Mediators</ProfessionCard></button>
+          <button><ProfessionCard icon={<SiHandshake />}>Arbitrators</ProfessionCard></button>
         </div>
       </div>
     </>
