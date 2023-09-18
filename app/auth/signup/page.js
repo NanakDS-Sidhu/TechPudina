@@ -15,7 +15,7 @@ const signUpInitialValues = {
   subtype:"Criminal Defense Lawyers"
 };
 
-const page = () => {
+const Page = () => {
   const [data, setData] = useState(signUpInitialValues);
   const router = useRouter();
 
