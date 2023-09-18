@@ -30,13 +30,19 @@ export default function PersonTable() {
                     Name
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Position
+                    Service Type
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Status
+                    Subtype
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Action
+                    Location
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Rating
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Price
                 </th>
             </tr>
         </thead>
