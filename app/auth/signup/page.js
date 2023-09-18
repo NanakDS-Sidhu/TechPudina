@@ -5,7 +5,7 @@ import Img from "../../../public/assets/auth-bg.png";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-const page = () => {
+const Page = () => {
   const signUpInitialValues = {
     email: "",
     password: "",

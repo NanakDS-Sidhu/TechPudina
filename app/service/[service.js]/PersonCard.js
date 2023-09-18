@@ -3,7 +3,7 @@ export default function PersonCard(props) {
     
     console.log(props)
   return (
-    <div className=' h-48 rounded-xl border border-gray-500 mx-4 flex'>
+    <div key={props.key} className=' h-48 rounded-xl border border-gray-500 mx-4 flex'>
         <div id="PIC" className='w-1/6 flex justify-center items-center'>
             <img className='rounded-full w-32 h-32 object-cover' src="https://images.unsplash.com/photo-1618151313441-bc79b11e5090?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHBvdHJhaXR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"></img>
         </div>

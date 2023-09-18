@@ -14,8 +14,8 @@ export default async function PersonTable() {
   return (
     <div className="">
       {data.data.map((obj)=>{
-        console.log(obj)
-        return(<PersonCard name={obj.fullName} role={obj.role} rating={obj.rating} location="Chandigarh,India" experience={10} ></PersonCard>)
+        console.log(obj,id)
+        return(<PersonCard key={id} name={obj.fullName} role={obj.role} rating={obj.rating} location="Chandigarh,India" experience={10} ></PersonCard>)
       })
       }
 

@@ -10,7 +10,7 @@ const loginInitialValues = {
   password: ""
 }
 
-const login = () => {
+const Login = () => {
   const router = useRouter();
   const [data, setData] = useState(loginInitialValues);
 
