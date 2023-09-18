@@ -1,8 +1,9 @@
-import connectDb from "@/config/dbConfig";
+
+import { connectDB } from "@/config/dbConfig";
 import User from "@/models/user"
 import { NextResponse } from "next/server";
 
-connectDb();
+connectDB();
 
 export async function GET(request, context) {
     try {
