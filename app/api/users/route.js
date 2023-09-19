@@ -1,6 +1,7 @@
 import { connectDB } from "@/config/dbConfig";
 import User from "@/models/user"
 import { NextResponse } from "next/server";
+import { getDataFromToken } from "@/utils/verify";
 
 connectDB();
 
@@ -54,20 +55,9 @@ export async function GET(request) {
     }
 }
 
-export async function POST(request) {
-
-}
-
 export async function DELETE(request) {
     try {
-        
-        const userId = request.nextUrl.searchParams.get("id");
-        console.log(userId)
-        if (!userId) {
-            return NextResponse.json("User ID is required for deletion.", { status: 400 });
-
-        }
-
+        const userId = new mongoose.Types.ObjectId(getDataFromToken(request));
         const result = await User.deleteOne({ _id: userId });
 
         if (result.deletedCount === 1) {
@@ -83,12 +73,7 @@ export async function DELETE(request) {
 
 export async function PATCH(request) {
     try {
-        const userId = request.nextUrl.searchParams.get("id");
-
-        if (!userId) {
-            return new Response("User ID is required for partial update.", { status: 400 });
-        }
-
+        const userId = new mongoose.Types.ObjectId(getDataFromToken(request));
         const updatedFields = await request.json();
 
         const result = await User.updateOne({ _id: userId }, { $set: updatedFields });
