@@ -15,7 +15,7 @@ export default function Page() {
       </div>
 
       <div className='grow' >      <h1 className='text-5xl p-4'>List of Lawyers</h1>
-        <PersonTable></PersonTable>
+        <PersonTable/>
       </div>
 
     </div>
