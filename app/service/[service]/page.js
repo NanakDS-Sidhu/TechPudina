@@ -9,7 +9,7 @@ export default function Page({params}) {
     <div className='h-screen  text-black flex'>
       <div className='w-1/4 h-screen'>
         <h2 className='text-4xl font-bold p-4'>Filters</h2>
-        <Filters></Filters>
+        <Filters service={params.service}></Filters>
 
       </div>
 

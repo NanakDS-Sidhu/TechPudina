@@ -1,22 +1,23 @@
 "use client"
-import { useState  } from "react";
+import { useEffect, useState  } from "react";
 import {AdvocatesTypes} from "../../../data"
+import { useRouter } from "next/router";
 
 const signUpInitialValues = {
-  fullName: "",
-  email: "",
-  password: "",
-  role: "client",
+  Rating:"",
+  Experience:"",
   servicetype : "advocates",
   subtype:"Criminal Defense Lawyers",
   Location:""
 };
 
 
-export default function Filters() {
-
-
+export default function Filters(props) {
   const [data, setData] = useState(signUpInitialValues);
+
+  useEffect(()=>{
+    setData({ ...data, servicetype:props.service })
+  },[])
 
   const onValueChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -51,20 +52,38 @@ export default function Filters() {
 
             </select>
 
-            <label className="mr-auto" htmlFor="Location">
+            <label className="mr-auto" htmlFor="Experience">
               Experience
             </label>
             <select
               className=" bg-slate-100 p-2 w-full"
-              name="Location"
-              id="Location"
-              value={data.Location}
+              name="Experience"
+              id="Experience"
+              value={data.Experience}
               onChange={(e) => onValueChange(e)}
             >
-              <option value="Chandigarh">Chandigarh</option>
-              <option value="Mumbai">Mumbai</option>
-              <option value="Delhi">Delhi</option>
-              <option value="Kolkata">Kolkata</option>
+              <option value="10 + years">10 + years</option>
+              <option value="10-5 years">10-5 years</option>
+              <option value="5-1 years">5-1 years</option>
+              <option value="less than a year">less than a year</option>
+
+            </select>
+
+
+            <label className="mr-auto" htmlFor="Rating">
+              Rating
+            </label>
+            <select
+              className=" bg-slate-100 p-2 w-full"
+              name="Rating"
+              id="Rating"
+              value={data.Rating}
+              onChange={(e) => onValueChange(e)}
+            >
+              <option value="4+ stars">4+ stars</option>
+              <option value="3+ years">3+ years</option>
+              <option value="2+ stars">2+ stars</option>
+              <option value="less than 2 stars">less than 2 stars</option>
 
             </select>
 
@@ -88,17 +107,8 @@ export default function Filters() {
                 </select>
               </>
             )}
-            <button className="bg-black text-white p-3 w-full">Sign Up</button>
+            <button className=" bg-blue-500 text-white rounded-lg p-3 w-full">Submit</button>
           </form>
-      
-      <div className="flex flex-col p-4 py-2">
-      <label className="mr-2 text-emerald-900 text-lg font-medium" htmlFor="role">props.label</label>
-        <select className=" bg-teal-700 text-white rounded-md focus:border-white p-2"  name="role" id="role">
-          <option value="Client">Client</option>
-          <option value="Service Provider">Service Provider</option>
-        </select>
-    </div>
-
 
     </div>
   )
