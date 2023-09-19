@@ -23,12 +23,36 @@ export default function Modal() {
         setBody(e.target.value);
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async (e) => {
         // You can perform any action here with the subject and body values.
         // For example, you can send them to an API or update your application state.
         // For now, we'll just log them.
         console.log('Subject:', subject);
         console.log('Body:', body);
+        e.preventDefault();
+        try {
+            const response = await fetch("/api/hire-request", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    subject : subject,
+                    body : body,
+                    sp_id : "650920a00206b38ef32ce5cd"
+                }),
+            });
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            const responseData = await response.json();
+            console.log("Login success", responseData);
+            router.push("/");
+
+        } catch (error) {
+            console.log("Login failed", error.message);
+        }
 
         // Close the modal
         closeModal();

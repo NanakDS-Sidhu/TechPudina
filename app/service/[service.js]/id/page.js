@@ -3,6 +3,7 @@ import Image from "next/image";
 import { FaLocationDot } from "react-icons/fa6";
 import { GiChest } from "react-icons/gi";
 import ReviewCard from "@/components/ReviewCard";
+import Modal from "@/components/Modal";
 
 const page = () => {
   // useEffect(async() => {
@@ -77,10 +78,11 @@ const page = () => {
                     <h3 className="w-4 h-4 ml-2">5.0</h3>
                   </div>
                 </div>
-                <button className=" bg-blue-500 text-white font-extrabold text-sm px-4">
+                <Modal />
+                {/* <button className=" bg-blue-500 text-white font-extrabold text-sm px-4">
                   {" "}
                   VIEW CONTACT NUMBER- 8360193664
-                </button>
+                </button> */}
               </div>
               <div className="grid grid-cols-2 border-b-2 gap-16">
                 <div className="py-6 ">

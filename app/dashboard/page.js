@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { MdDeleteOutline } from "react-icons/md";
 
 const Dashboard = ({
-    clientSide = true
+    clientSide = false
 }) => {
-    const [data,setData] = useState([]);
+    const [data, setData] = useState([]);
     useEffect(() => {
         async function fetchData() {
             try {
@@ -16,14 +16,21 @@ const Dashboard = ({
                 }
                 const resjson = await res.json();
                 setData(resjson.data);
-            } catch (e){
+            } catch (e) {
                 console.log(e);
             }
         }
         fetchData();
     }, []);
-    const handleDelete = async(id) =>{
+    const handleDelete = async (id) => {
         const res = await fetch(`http://localhost:3000/api/hire-request?rid=${id}`, { method: "DELETE" });
+        console.log(res);
+    }
+    const handleStateChange = async (hireRequestId, newStatus) => {
+        const res = await fetch(`http://localhost:3000/api/hire-request`,
+            { method: "PATCH" , body: JSON.stringify({
+                hireRequestId : hireRequestId , newStatus :newStatus
+            })},);
         console.log(res);
     }
     return (
@@ -43,8 +50,15 @@ const Dashboard = ({
                                     <p>{x.body}</p>
                                 </div>
                                 <div className="px-8 flex flex-col items-center justify-center">
-                                    <h2 className={`${x.state === "Pending" ? "text-blue-500" : x.state === "Complete" ? "text-green-500" : "text-red-500"} text-xl font-semibold`}>{x.state}</h2>
-                                    {clientSide && <button className="text-red-500 text-2xl absolute top-0 right-0" onClick={()=>handleDelete(x._id)}><MdDeleteOutline /></button>}
+                                    <h2 className={`${x.state === "pending" ? "text-blue-500" : x.state === "Complete" ? "text-green-500" : "text-red-500"} text-xl font-semibold`}>{x.state}</h2>
+                                    {clientSide ?
+                                        <button className="text-red-500 text-2xl absolute top-0 right-0" onClick={() => handleDelete(x._id)}><MdDeleteOutline /></button> :
+                                        <div className="flex gap-1">
+                                            <button className="text-green-500" onClick={() => handleStateChange(x._id, "Accepted")}>Accept</button>
+                                            <p>|</p>
+                                            <button className="text-red-500" onClick={() => handleStateChange(x._id, "rejected")}>Reject</button>
+                                        </div>
+                                    }
                                 </div>
                             </div>
                             <h1 className="text-right w-full">{x.sp_name}</h1>
