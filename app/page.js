@@ -43,12 +43,13 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mt-8 px-20">
-        <div className="h-1/2"></div>
-        <h1 className="flex justify-center text-3xl font-extrabold mb-10">
+      <div className="mt-20 px-20 flex flex-col items-center"> 
+        
+        <h1 className="flex justify-center items-center text-3xl font-extrabold mb-10">
           Select a Service
         </h1>
-        <div className="flex justify-around h-auto  text-5xl">
+        <p className="mb-20">Onboarding legal service providers on an eMarketplace to extend legal services to citizens in India.</p>
+        <div className="flex justify-around items-center text-5xl gap-14 mb-24">
           <button><ProfessionCard icon={<HiMiniScale />}>Advocates</ProfessionCard></button>
           <button><ProfessionCard icon={<HiOutlineDocumentText />}>Document Writers</ProfessionCard></button>
           <button><ProfessionCard icon={<ImHammer2 />}>Notaries</ProfessionCard></button>

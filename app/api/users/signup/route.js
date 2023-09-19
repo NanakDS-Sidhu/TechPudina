@@ -8,7 +8,7 @@ connectDB()
 export async function POST(request){
     try {
         const reqBody = await request.json()
-        const {email, password, fullName, role} = reqBody
+        const {email, password, fullName, role, servicetype, subtype} = reqBody
 
         //check if user already exists
         const user = await User.findOne({email})
@@ -21,12 +21,32 @@ export async function POST(request){
         const salt = await bcryptjs.genSalt(10)
         const hashedPassword = await bcryptjs.hash(password, salt)
 
-        const newUser = new User({
-            fullName,
-            email,
-            password: hashedPassword,
-            role
-        })
+        let newUser;
+        if(role == 'client') {
+            newUser = new User({
+                fullName,
+                email,
+                password: hashedPassword,
+                role,                
+            })            
+        } else if (role == 'service_provider' && servicetype == 'advocates'){
+            newUser = new User({
+                fullName,
+                email,
+                password: hashedPassword,
+                role,
+                servicetype,
+                subtype
+            })
+        } else {
+            newUser = new User({
+                fullName,
+                email,
+                password: hashedPassword,
+                role,
+                servicetype,               
+            })            
+        }       
 
         const savedUser = await newUser.save()             
 
@@ -37,6 +57,8 @@ export async function POST(request){
         })     
 
     } catch (error) {
+        console.log(error)
         return NextResponse.json({error: error.message}, {status: 500})
+        
     }
 }

@@ -11,7 +11,7 @@ const signUpInitialValues = {
   email: "",
   password: "",
   role: "client",
-  servicetype : "document_writers ",
+  servicetype : "document_writers",
   subtype:"Criminal Defense Lawyers"
 };
 
@@ -94,10 +94,10 @@ const Page = () => {
               value={data.role}
               onChange={(e) => onValueChange(e)}
             >
-              <option value="Client">Client</option>
-              <option value="Service Provider">Service Provider</option>
+              <option value="client">Client</option>
+              <option value="service_provider">Service Provider</option>
             </select>
-            {data.role === "Service Provider" && (
+            {data.role === "service_provider" && (
               <>
                 <label className="mr-auto" htmlFor="role">
                   Choose a Profession:
@@ -107,9 +107,9 @@ const Page = () => {
                   name="servicetype"
                   id="servicetype"
                   value={data.servicetype}
-                  onChange={(e) => onValueChange(e)}
+                  onChange={(e) => onValueChange(e)}                  
                 >
-                  <option value="document_writers ">Document Writers</option>
+                  <option value="document_writers">Document Writers</option>
                   <option value="advocates">Advocates</option>
                   <option value="arbitrators">Arbitrators</option>
                   <option value="mediators">Mediators</option>
@@ -127,7 +127,7 @@ const Page = () => {
                   name="subtype"
                   id="subtype"
                   value={data.subtype}
-                  onChange={(e) => onValueChange(e)}
+                  onChange={(e) => onValueChange(e)}                  
                 >
                   {
                     AdvocatesTypes.map((e,i) => (
