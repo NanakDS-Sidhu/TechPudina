@@ -10,12 +10,12 @@ export default function Page() {
     <div className='h-screen  text-black flex'>
       <div className='w-1/4 h-screen'>
         <h2 className='text-5xl p-4'>Filters</h2>
-          <Filters></Filters>
+        <Filters></Filters>
 
       </div>
 
       <div className='grow' >      <h1 className='text-5xl p-4'>List of Lawyers</h1>
-      <PersonTable></PersonTable>
+        <PersonTable></PersonTable>
       </div>
 
     </div>
