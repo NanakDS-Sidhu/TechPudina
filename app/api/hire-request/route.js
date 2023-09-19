@@ -10,12 +10,37 @@ connectDB();
 export async function GET(request) {
     try {
         const userId = new mongoose.Types.ObjectId(getDataFromToken(request));
+        if (!userId) {
+            return NextResponse.json({ error: "Not auth" }, { status: 400 });
+        }
+
+        // Fetch hire requests for the user
         const hireRequests = await HireRequest.find({ $or: [{ sp_id: userId }, { client_id: userId }] });
-        return NextResponse.json({ data: hireRequests }, { status: 200 });
+
+        // Fetch user names associated with sp_id
+        const spIds = hireRequests.map((request) => request.sp_id);
+        const users = await User.find({ _id: { $in: spIds } });
+        console.log(users);
+
+        // Create a mapping of sp_id to user name
+        const spIdToNameMap = {};
+        users.forEach((user) => {
+            spIdToNameMap[user._id.toString()] = user.fullName; // Assuming there's a 'name' field in the User model
+        });
+        console.log(spIdToNameMap)
+
+        // Add the user names to the hire request objects
+        const hireRequestsWithNames = hireRequests.map((request) => ({
+            ...request.toObject(),
+            sp_name: spIdToNameMap[request.sp_id.toString()] || 'Unknown', // Default to 'Unknown' if no name is found
+        }));
+
+        return NextResponse.json({ data: hireRequestsWithNames }, { status: 200 });
     } catch (error) {
         return NextResponse.json({ error: 'Error fetching requests' }, { status: 500 });
     }
 }
+
 
 export async function POST(request) {
     try {
@@ -48,9 +73,13 @@ export async function POST(request) {
 export async function DELETE(request) {
     try {
         const userId = new mongoose.Types.ObjectId(getDataFromToken(request));
+        console.log(userId)
         const requestId = request.nextUrl.searchParams.get("rid");
-        const reqDoc = HireRequest.findById(requestId);
-        if (reqDoc.client_id != userId) {
+        console.log(requestId)
+        const reqDoc = await HireRequest.findById(requestId);
+        console.log(reqDoc)
+        console.log(reqDoc.client_id.toString(), userId.toString());
+        if (reqDoc.client_id.toString() != userId.toString()) {
             return NextResponse.json({ error: "You cannot delete" }, { status: 400 });
         }
 
