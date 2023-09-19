@@ -3,12 +3,12 @@ export default function PersonCard(props) {
     
     console.log(props)
   return (
-    <div key={props.key} className=' h-48 rounded-xl border border-gray-500 mx-4 flex'>
+    <div key={props.key} className=' h-48 rounded-xl border mx-8 my-4 flex'>
         <div id="PIC" className='w-1/6 flex justify-center items-center'>
-            <img className='rounded-full w-32 h-32 object-cover' src="https://images.unsplash.com/photo-1618151313441-bc79b11e5090?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHBvdHJhaXR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"></img>
+            <img className='rounded-full w-32 h-32 object-cover' src="https://img.freepik.com/free-vector/illustration-businessman_53876-5856.jpg?size=626&ext=jpg"></img>
         </div>
-        <div id="General info" className='w-2/6 flex flex-col justify-center items-center'>
-            <h1 className='my-1'>{props.role+" "+props.name}</h1>
+        <div id="General info" className='w-2/6 flex flex-col justify-center '>
+            <h1 className='my-1 text-2xl capitalize'>{props.role+" "+props.name}</h1>
             <h2 className='my-1'>{props.location}</h2>
             <h2 className='my-1'>{props.experience} year Experience</h2>
         </div>
@@ -25,7 +25,7 @@ export default function PersonCard(props) {
     </div>
     <h1> Areas of Expertise</h1>
     <h2>Cheque Bounce, Divorce, Family</h2>
-    <button className='bg-teal-700 p-4 rounded-lg text-white'>Contact now</button>
+    <button className='bg-blue-500 p-2 px-4 rounded-lg text-white mt-5'>Contact now</button>
 </div>
 
         </div>
