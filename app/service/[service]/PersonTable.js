@@ -3,13 +3,13 @@
 import React, { useEffect, useState } from 'react'
 import PersonCard from './PersonCard';
 
-export default function PersonTable() {
+export default function PersonTable(props) {
   const [data, setData] = useState([]);
-
+console.log(props.role)
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch('/api/users');
+        const res = await fetch(`/api/users?servicetype=${props.role}`);
         if (!res.ok) {
           throw new Error('Failed to fetch data');
         }

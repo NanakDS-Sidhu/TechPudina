@@ -1,4 +1,4 @@
-
+"use client"
 import Image from "next/image";
 import HomeImg from "../public/assets/home-bg.jpg";
 import ProfessionCard from "../components/ProfessionCard";
@@ -8,8 +8,10 @@ import {HiOutlineDocumentText} from "react-icons/hi";
 import {ImHammer2} from "react-icons/im";
 import {PiHandshakeBold} from "react-icons/pi"
 import {SiHandshake} from "react-icons/si"
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <>
       <div className="flex p-10 justify-between text-black">
@@ -50,11 +52,11 @@ export default function Home() {
         </h1>
         <p className="mb-20">Onboarding legal service providers on an eMarketplace to extend legal services to citizens in India.</p>
         <div className="flex justify-around items-center text-5xl gap-14 mb-24">
-          <button><ProfessionCard icon={<HiMiniScale />}>Advocates</ProfessionCard></button>
-          <button><ProfessionCard icon={<HiOutlineDocumentText />}>Document Writers</ProfessionCard></button>
-          <button><ProfessionCard icon={<ImHammer2 />}>Notaries</ProfessionCard></button>
-          <button><ProfessionCard icon={<PiHandshakeBold />}>Mediators</ProfessionCard></button>
-          <button><ProfessionCard icon={<SiHandshake />}>Arbitrators</ProfessionCard></button>
+          <button onClick={() => {router.push("/service/advocates")}}><ProfessionCard icon={<HiMiniScale />}>Advocates</ProfessionCard></button>
+          <button onClick={() => {router.push("/service/document_writers")}}><ProfessionCard icon={<HiOutlineDocumentText />}>Document Writers</ProfessionCard></button>
+          <button onClick={() => {router.push("/service/notaries")}}><ProfessionCard icon={<ImHammer2 />}>Notaries</ProfessionCard></button>
+          <button onClick={() => {router.push("/service/mediators")}}><ProfessionCard icon={<PiHandshakeBold />}>Mediators</ProfessionCard></button>
+          <button onClick={() => {router.push("/service/arbitrators")}}><ProfessionCard icon={<SiHandshake />}>Arbitrators</ProfessionCard></button>
         </div>
       </div>
     </>
