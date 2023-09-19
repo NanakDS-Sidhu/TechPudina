@@ -5,14 +5,14 @@ import User from "@/models/user";
 connectDB();
 
 export async function GET(request) {
-    console.log("hi")
+    
     try {
-        const {
-            id
-        } = await request.json();
-        console.log(id);
+        const query = request.nextUrl.searchParams;
+        const id = query.get("userId");       
+        // console.log(id);
         const user = await User.findById(id);
-        return NextResponse.json({ data: user }, { status: 200 });
+        // console.log(user, "AM I USER")
+        return NextResponse.json({ data: user , status: 200 });
     } catch (error) {
         console.log(error);
         return NextResponse.json({ error: 'Error fetching requests'+error }, { status: 500 });

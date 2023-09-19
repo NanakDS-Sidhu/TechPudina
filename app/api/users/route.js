@@ -49,6 +49,7 @@ export async function GET(request) {
         }
 
         const users = await User.find(filters);
+        console.log(users)
         return NextResponse.json({ data: users }, { status: 200 });
     } catch (error) {
         return NextResponse.json({ error: 'Error fetching users' }, { status: 500 });

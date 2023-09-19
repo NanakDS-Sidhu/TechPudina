@@ -14,8 +14,9 @@ console.log(props.role)
           throw new Error('Failed to fetch data');
         }
         const jsonData = await res.json();
-        console.log(jsonData)
-        setData(jsonData.data);        
+        
+        setData(jsonData.data);      
+        console.log(data)  
       } catch (error) {
         console.error('Error fetching data:', error);        
       }
@@ -28,7 +29,7 @@ console.log(props.role)
     <div className="">
       {data && data.map((obj, id) => {
         console.log(obj, id)
-        return (<PersonCard key={id} name={obj.fullName} role={obj.role} rating={obj.rating} location="Chandigarh,India" experience={10} ></PersonCard>)
+        return (<PersonCard key={id} type={props.role} id={obj._id} name={obj.fullName} role={obj.role} rating={obj.rating} location="Chandigarh,India" experience={10} ></PersonCard>)
       })
       }
     </div>

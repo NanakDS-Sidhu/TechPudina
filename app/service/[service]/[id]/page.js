@@ -1,17 +1,34 @@
-import React from "react";
+"use client"
+
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaLocationDot } from "react-icons/fa6";
 import { GiChest } from "react-icons/gi";
 import ReviewCard from "@/components/ReviewCard";
 import Modal from "@/components/Modal";
 
-const page = () => {
-  // useEffect(async() => {
-  //     try{
-  //         const res = await fetch("api/users")
-  //     }
+const page = ({params}) => {
+  const [data, setData] = useState();
 
-  //   }, []);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        console.log(params)
+        const res = await fetch(`/api/user?userId=${params.id}`);
+        if (!res.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const jsonData = await res.json();
+
+        setData(jsonData.data);
+        console.log(data)
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -156,9 +173,9 @@ const page = () => {
         </div>
         <div>
           <div className="flex flex-col gap-8 py-8">
-            <ReviewCard/>
-            <ReviewCard/>
-            <ReviewCard/>
+            <ReviewCard />
+            <ReviewCard />
+            <ReviewCard />
           </div>
         </div>
       </div>
